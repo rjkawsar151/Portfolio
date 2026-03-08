@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Send, CheckCircle2, AlertCircle, Loader2, User, AtSign, MessageSquare, Type, AtSign as EmailIcon } from 'lucide-react';
+import { Mail, Send, CheckCircle2, AlertCircle, Loader2, User, AtSign, MessageSquare, Type, AtSign as EmailIcon, Phone } from 'lucide-react';
 
 interface FormData {
   name: string;
   email: string;
+  phone: string;
   subject: string;
   message: string;
 }
@@ -14,6 +15,7 @@ export default function Contact() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
+    phone: '',
     subject: '',
     message: '',
   });
@@ -38,7 +40,7 @@ export default function Contact() {
 
       if (res.ok) {
         setStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
         setTimeout(() => setStatus('idle'), 4000);
       } else {
         const data = await res.json();
@@ -133,6 +135,19 @@ export default function Contact() {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="e.g. john@example.com"
+                  className={inputClass}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-mono text-slate-400 flex items-center gap-2">
+                  <Phone size={14} /> WhatsApp Number <span className="text-slate-500 font-normal italic">(Optional)</span>
+                </label>
+                <input
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  placeholder="e.g. +880 1712-345678"
                   className={inputClass}
                 />
               </div>

@@ -67,7 +67,7 @@ app.post('/api/contact', async (req, res) => {
     return res.status(429).json({ error: 'Too many requests. Please try again later.' });
   }
 
-  const { name, email, subject, message } = req.body;
+  const { name, email, phone, subject, message } = req.body;
 
   // Validation
   if (!name || !email || !message) {
@@ -101,6 +101,11 @@ app.post('/api/contact', async (req, res) => {
               <td style="padding: 8px 0; color: #64748B; font-size: 14px;"><strong>Subject:</strong></td>
               <td style="padding: 8px 0; color: #E2E8F0; font-size: 14px;">${subject || 'N/A'}</td>
             </tr>
+            ${phone ? `
+            <tr>
+              <td style="padding: 8px 0; color: #64748B; font-size: 14px;"><strong>WhatsApp:</strong></td>
+              <td style="padding: 8px 0; color: #E2E8F0; font-size: 14px;"><a href="https://wa.me/${phone.replace(/[^0-9]/g, '')}" style="color: #3B82F6;">${phone}</a></td>
+            </tr>` : ''}
           </table>
           <hr style="border: none; border-top: 1px solid #334155; margin: 20px 0;" />
           <div style="padding: 16px; background: #1E293B; border-radius: 8px; margin-top: 12px;">
