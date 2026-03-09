@@ -44,8 +44,8 @@ export default function KnowledgeChips() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">Highlighted <span className="text-electric">Knowledge</span></h2>
-          <p className="text-slate-400 code-text">// Expertise in modern development and digital growth</p>
+          <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase">Highlighted <span className="text-slate-400">Knowledge</span></h2>
+          <p className="text-slate-800 font-mono text-sm tracking-widest uppercase">// Expertise in development and growth</p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -57,13 +57,13 @@ export default function KnowledgeChips() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -10, scale: 1.05 }}
-              className={`glass-card p-6 border-t-4 ${item.color} flex flex-col items-center text-center space-y-4`}
+              className={`glass-card p-6 border-t-4 ${item.color} flex flex-col items-center text-center space-y-4 shadow-xl`}
             >
-              <div className="p-3 bg-white/5 rounded-2xl shadow-inner">
+              <div className="p-3 bg-black/5 rounded-2xl shadow-inner group">
                 {item.icon}
               </div>
-              <h3 className="font-bold text-lg">{item.title}</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <h3 className="font-black text-lg text-slate-900 uppercase">{item.title}</h3>
+              <p className="text-xs text-slate-800 font-bold leading-relaxed">
                 {item.description}
               </p>
             </motion.div>

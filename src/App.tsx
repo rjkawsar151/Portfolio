@@ -31,10 +31,9 @@ function App() {
   ];
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen bg-dotted">
       {/* Background Layer */}
-      <div className="fixed inset-0 bg-cinema-gradient -z-20" />
-      <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none -z-10" />
+      <div className="fixed inset-0 bg-gradient-light pointer-events-none -z-10" />
 
       {/* Modern Navigation */}
       <header 
@@ -43,22 +42,21 @@ function App() {
         }`}
       >
         <div className={`max-w-7xl mx-auto flex items-center justify-between transition-all duration-300 ${
-          isScrolled ? 'glass-panel px-6 py-3 border-white/5 bg-midnight/50' : ''
+          isScrolled ? 'backdrop-blur-md px-6 py-3 border-black/5 bg-white/50' : ''
         }`}>
           <a href="#" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 bg-electric rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:rotate-12 transition-transform">
+            <div className="w-10 h-10 bg-black rounded-xl flex items-center justify-center shadow-lg shadow-black/10 group-hover:rotate-12 transition-transform">
               <Rocket className="text-white" size={20} />
             </div>
-            <span className="text-xl font-black tracking-tighter text-white uppercase hidden sm:block">Kawsar.</span>
+            <span className="text-xl font-black tracking-tighter text-black uppercase hidden sm:block">Kawsar.</span>
           </a>
 
-          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a 
                 key={link.name} 
                 href={link.href}
-                className="text-sm font-medium text-slate-400 hover:text-white transition-colors"
+                className="text-sm font-bold text-slate-600 hover:text-black transition-colors"
                 onClick={(e) => {
                   e.preventDefault();
                   document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
@@ -67,17 +65,19 @@ function App() {
                 {link.name}
               </a>
             ))}
-            <div className="h-6 w-px bg-white/10" />
-            <div className="flex items-center gap-4">
-              <a href="https://www.linkedin.com/in/kawsar202/" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white transition-colors"><Linkedin size={18} /></a>
-              <a href="https://www.facebook.com/Rj.kawsar202" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white transition-colors"><Facebook size={18} /></a>
-              <a href="https://www.instagram.com/rj.kawsar202/" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white transition-colors"><Instagram size={18} /></a>
+            <div className="flex items-center gap-4 text-black/60">
+              <a href="https://www.linkedin.com/in/kawsar202/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors"><Linkedin size={18} /></a>
+              <a href="https://www.facebook.com/Rj.kawsar202" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors"><Facebook size={18} /></a>
+              <a href="https://www.instagram.com/rj.kawsar202/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors"><Instagram size={18} /></a>
             </div>
+            <a href="#contact" className="ml-4 px-6 py-2 bg-black text-white text-sm font-bold rounded-lg hover:scale-105 transition-transform hidden lg:block">
+              hello@kawsar.dev
+            </a>
           </nav>
 
           {/* Mobile Menu Toggle */}
           <button 
-            className="md:hidden p-2 text-white"
+            className="md:hidden p-2 text-black"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -91,14 +91,14 @@ function App() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="absolute top-24 left-6 right-6 glass-panel p-8 md:hidden shadow-3xl bg-midnight/90"
+              className="absolute top-24 left-6 right-6 glass-panel p-8 md:hidden shadow-3xl bg-white/95 backdrop-blur-xl border-black/5"
             >
               <nav className="flex flex-col gap-6">
                 {navLinks.map((link) => (
                   <a 
                     key={link.name} 
                     href={link.href}
-                    className="text-2xl font-bold text-white"
+                    className="text-2xl font-black text-black uppercase tracking-tighter"
                     onClick={() => {
                       setMobileMenuOpen(false);
                       document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
@@ -107,10 +107,10 @@ function App() {
                     {link.name}
                   </a>
                 ))}
-                 <div className="flex gap-4 pt-6 border-t border-white/10">
-                  <a href="https://www.linkedin.com/in/kawsar202/" target="_blank" rel="noopener noreferrer" className="text-slate-400"><Linkedin size={24} /></a>
-                  <a href="https://www.facebook.com/Rj.kawsar202" target="_blank" rel="noopener noreferrer" className="text-slate-400"><Facebook size={24} /></a>
-                  <a href="https://www.instagram.com/rj.kawsar202/" target="_blank" rel="noopener noreferrer" className="text-slate-400"><Instagram size={24} /></a>
+                 <div className="flex gap-4 pt-6 border-t border-black/10">
+                  <a href="https://www.linkedin.com/in/kawsar202/" target="_blank" rel="noopener noreferrer" className="text-slate-800"><Linkedin size={24} /></a>
+                  <a href="https://www.facebook.com/Rj.kawsar202" target="_blank" rel="noopener noreferrer" className="text-slate-800"><Facebook size={24} /></a>
+                  <a href="https://www.instagram.com/rj.kawsar202/" target="_blank" rel="noopener noreferrer" className="text-slate-800"><Instagram size={24} /></a>
                 </div>
               </nav>
             </motion.div>
@@ -133,18 +133,18 @@ function App() {
         <Contact />
       </main>
 
-      <footer className="py-12 border-t border-white/5 bg-white/[0.01]">
+      <footer className="py-12 border-t border-black/5 bg-black/[0.01]">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-4">
-            <Rocket className="text-electric" size={24} />
+            <Rocket className="text-black" size={24} />
             <span className="text-slate-500 text-sm font-medium">© 2026 Md. Kawsar Hosen. All rights reserved.</span>
           </div>
            <div className="flex items-center gap-6">
-            <a href="#hero" className="text-slate-500 hover:text-white transition-colors text-xs uppercase font-bold tracking-widest" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Back to Top</a>
+            <a href="#hero" className="text-slate-500 hover:text-black transition-colors text-xs uppercase font-bold tracking-widest" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Back to Top</a>
             <div className="flex gap-4">
-              <a href="https://www.linkedin.com/in/kawsar202/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/5 flex items-center justify-center hover:bg-electric hover:text-white transition-all"><Linkedin size={16} /></a>
-              <a href="https://www.facebook.com/Rj.kawsar202" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/5 flex items-center justify-center hover:bg-electric hover:text-white transition-all"><Facebook size={16} /></a>
-              <a href="https://www.instagram.com/rj.kawsar202/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/5 flex items-center justify-center hover:bg-electric hover:text-white transition-all"><Instagram size={16} /></a>
+              <a href="https://www.linkedin.com/in/kawsar202/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all"><Linkedin size={16} /></a>
+              <a href="https://www.facebook.com/Rj.kawsar202" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all"><Facebook size={16} /></a>
+              <a href="https://www.instagram.com/rj.kawsar202/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all"><Instagram size={16} /></a>
             </div>
           </div>
         </div>

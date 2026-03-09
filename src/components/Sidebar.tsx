@@ -47,6 +47,7 @@ const treeData: TreeNode[] = [
     icon: <Server size={14} />,
     children: [
       { id: 'it-mayfair', label: 'Mayfair.tsx', icon: <FileCode size={14} />, sectionId: 'project-mayfair' },
+      { id: 'it-hush', label: 'HushTheFast.tsx', icon: <FileCode size={14} />, sectionId: 'project-hush' },
       { id: 'it-erp', label: 'DistributorERP.tsx', icon: <FileCode size={14} />, sectionId: 'project-erp' },
     ],
   },
@@ -100,8 +101,8 @@ function TreeNodeComponent({ node, depth, activeSection, onNavigate }: TreeNodeC
     <div>
       <motion.div
         className={`flex items-center gap-1.5 py-1 px-2 cursor-pointer rounded-md text-sm transition-colors duration-200 ${isActive
-            ? 'bg-electric/10 text-electric-glow'
-            : 'text-slate-bright/70 hover:text-slate-bright hover:bg-white/[0.03]'
+          ? 'bg-black text-white'
+          : 'text-slate-700 hover:text-black hover:bg-black/[0.03]'
           }`}
         style={{ paddingLeft: `${depth * 16 + 8}px` }}
         onClick={handleClick}
@@ -119,7 +120,7 @@ function TreeNodeComponent({ node, depth, activeSection, onNavigate }: TreeNodeC
           <span className="w-3.5 flex-shrink-0" />
         )}
         <span className="flex-shrink-0 opacity-70">
-          {hasChildren ? (isOpen ? <FolderOpen size={14} className="text-electric" /> : <Folder size={14} className="text-electric/60" />) : node.icon}
+          {hasChildren ? (isOpen ? <FolderOpen size={14} className="text-slate-900" /> : <Folder size={14} className="text-slate-600" />) : node.icon}
         </span>
         <span className="truncate code-text text-xs font-medium">{node.label}</span>
       </motion.div>
@@ -180,8 +181,8 @@ export default function Sidebar({ activeSection, onNavigate, isOpen, onClose }: 
           } transition-transform duration-300 ease-out`}
       >
         {/* Explorer Header */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-glass-border">
-          <span className="text-[11px] uppercase tracking-widest text-slate-accent font-semibold">
+        <div className="flex items-center justify-between px-4 py-3 border-b border-black/5">
+          <span className="text-[11px] uppercase tracking-widest text-slate-500 font-black">
             Explorer
           </span>
           <div className="flex gap-1">
@@ -192,10 +193,10 @@ export default function Sidebar({ activeSection, onNavigate, isOpen, onClose }: 
         </div>
 
         {/* Workspace label */}
-        <div className="px-4 py-2 border-b border-glass-border">
-          <div className="flex items-center gap-2 text-xs text-slate-bright/50">
+        <div className="px-4 py-2 border-b border-black/5">
+          <div className="flex items-center gap-2 text-xs text-slate-800">
             <ChevronDown size={12} />
-            <span className="uppercase tracking-wider font-semibold text-[10px]">kawsar-portfolio</span>
+            <span className="uppercase tracking-widest font-black text-[10px]">kawsar-portfolio</span>
           </div>
         </div>
 
@@ -216,10 +217,10 @@ export default function Sidebar({ activeSection, onNavigate, isOpen, onClose }: 
         </div>
 
         {/* Sidebar Footer */}
-        <div className="px-4 py-3 border-t border-glass-border">
+        <div className="px-4 py-3 border-t border-black/5">
           <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span className="code-text text-[10px] text-slate-accent">
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            <span className="font-mono text-[10px] text-slate-600 font-bold uppercase tracking-widest">
               Available for hire
             </span>
           </div>

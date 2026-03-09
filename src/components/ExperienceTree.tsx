@@ -36,10 +36,10 @@ export default function ExperienceTree() {
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="mb-16 border-r-4 border-indigo-500 pr-6 text-right"
+          className="mb-16 border-r-4 border-black pr-6 text-right"
         >
-          <h2 className="text-4xl font-bold mb-2">Work <span className="text-indigo-400">Experience</span></h2>
-          <p className="text-slate-400 code-text">// Career milestones & professional growth</p>
+          <h2 className="text-4xl font-black mb-2 uppercase">Work <span className="text-black/40">Experience</span></h2>
+          <p className="text-slate-600 font-mono text-sm tracking-widest uppercase">// Career milestones & professional growth</p>
         </motion.div>
 
         <div className="relative space-y-12">
@@ -49,10 +49,10 @@ export default function ExperienceTree() {
           {experienceData.map((exp, index) => (
             <motion.div
               key={exp.role}
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
+              initial={{ opacity: 0, y: 50, skewX: 5 }}
+              whileInView={{ opacity: 1, y: 0, skewX: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] as any }}
               className="relative flex flex-col md:flex-row-reverse items-start md:items-center gap-8 pr-0 md:pr-2"
             >
               {/* 3D Animated Node */}
@@ -61,28 +61,28 @@ export default function ExperienceTree() {
                   animate={{ rotateY: -360, rotateX: [0, -10, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
                   className="w-16 h-16 glass-card flex items-center justify-center cubic-3d"
-                  style={{ borderTop: `4px solid ${exp.color}50` }}
+                  style={{ borderTop: `4px solid ${exp.color}` }}
                 >
-                  <div className="text-white transform translate-z-10 bg-midnight/80 p-3 rounded-lg border border-white/5 shadow-xl">
+                  <div className="text-black transform translate-z-10 bg-white/40 backdrop-blur-md p-3 rounded-lg border border-black/5 shadow-xl">
                     {exp.icon}
                   </div>
                 </motion.div>
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full blur-sm opacity-20" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-black rounded-full blur-sm opacity-10" />
               </div>
 
               {/* Card Content */}
-              <div className="glass-card p-6 flex-1 w-full hover:border-indigo-500/30 transition-all text-left md:text-right">
+              <div className="glass-card p-6 flex-1 w-full hover:border-black/30 transition-all text-left md:text-right shadow-xl">
                 <div className="flex justify-between items-start md:flex-row-reverse mb-4">
-                  <span className="text-xs font-mono text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full">
+                  <span className="text-xs font-black text-white bg-black px-4 py-1.5 rounded-full uppercase tracking-widest">
                     {exp.period}
                   </span>
-                  <div className="md:hidden p-2 glass-card border-white/5">
+                  <div className="md:hidden p-2 glass-card border-black/5">
                     {exp.icon}
                   </div>
                 </div>
-                <h3 className="text-xl font-bold mb-1">{exp.role}</h3>
-                <p className="text-indigo-400 font-medium mb-3">{exp.company}</p>
-                <p className="text-sm text-slate-400 leading-relaxed">
+                <h3 className="text-xl font-black mb-1 uppercase text-slate-900">{exp.role}</h3>
+                <p className="text-slate-600 font-bold mb-3 uppercase tracking-tight">{exp.company}</p>
+                <p className="text-sm text-slate-700 font-medium leading-relaxed">
                   {exp.details}
                 </p>
               </div>

@@ -3,102 +3,139 @@ import { TypeAnimation } from 'react-type-animation';
 import profileImg from '../assets/profile.png';
 
 export default function Hero() {
-  return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 pb-32 px-6 overflow-hidden">
-      {/* Background Orbs */}
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-indigo-600/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1.5s' }} />
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      }
+    }
+  };
 
-      <div className="max-w-6xl w-full grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        {/* Profile Image Column */}
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40, filter: 'blur(10px)' },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: 'blur(0px)',
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }
+    }
+  };
+
+  return (
+    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-20 px-6 overflow-hidden">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="max-w-7xl w-full flex flex-col items-center relative z-10"
+      >
+
+        {/* Intro Text */}
+        <motion.div variants={itemVariants} className="mb-2 text-center">
+          <p className="text-xl font-bold text-slate-800 uppercase tracking-widest">
+            my name is <span className="font-black text-black underline decoration-black/20 decoration-4">Kawsar</span> and I am a freelance
+          </p>
+        </motion.div>
+
+        {/* Dynamic Typography Section - Background Text with Typewriter */}
+        <div className="relative w-full flex flex-col items-center justify-center py-4 mt-4">
+          <div className="flex flex-col items-center justify-center select-none pointer-events-none opacity-90 text-center relative h-[250px] md:h-[350px]">
+            <div className="text-[12vw] md:text-[10vw] leading-[0.8] font-black text-slate-900 tracking-tighter uppercase whitespace-nowrap">
+              <TypeAnimation
+                sequence={[
+                  'SEO, Content &', 1500,
+                  'Digital Marketing &', 1500,
+                  'Wordpress &', 1500,
+                  'Video edit &', 1500,
+                  'Creatives &', 1500,
+                ]}
+                repeat={Infinity}
+                cursor={false}
+              />
+            </div>
+            <div className="text-[12vw] md:text-[10vw] leading-[0.8] font-black text-outline tracking-tighter uppercase whitespace-nowrap">
+              <TypeAnimation
+                sequence={[
+                  'Meta, Google ads', 1500,
+                  'analysis', 1500,
+                  'Vibe Code', 1500,
+                  'Motion Graphics', 1500,
+                  'Graphics', 1500,
+                ]}
+                repeat={Infinity}
+                cursor={false}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Profile Image - Positioned to overlap bottom half of text */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative group"
+          initial={{ opacity: 0, y: 50, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as any, delay: 0.4 }}
+          className="w-[320px] md:w-[620px] z-20 pointer-events-none -mt-32 md:-mt-52"
         >
-          <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-          <div className="relative glass-panel p-2 transform transition duration-500 hover:scale-[1.02] cubic-3d hover:rotate-y-12">
+          <div className="mask-fade-bottom">
             <img
               src={profileImg}
               alt="Md. Kawsar Hosen"
-              className="rounded-xl w-full aspect-square object-cover shadow-2xl"
+              className="w-full h-auto object-cover"
+              style={{ filter: 'grayscale(100%) brightness(1.2) contrast(1.1)' }}
             />
-            {/* Overlay Info Card */}
-            <div className="absolute -bottom-6 -right-6 glass-card p-4 border-electric/30 animate-float">
-              <p className="text-xs font-mono text-electric-glow">ONLINE</p>
-              <h4 className="text-sm font-bold">Dhaka, BD</h4>
-            </div>
           </div>
         </motion.div>
 
-        {/* Text Column */}
-        <div className="space-y-8">
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h2 className="text-electric font-mono text-lg mb-2">Hello, there!</h2>
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-4">
-              Meet <span className="gradient-heading">Md. Kawsar Hosen</span>
-            </h1>
-            <div className="h-12 text-2xl md:text-3xl font-medium text-slate-300">
-              <TypeAnimation
-                sequence={[
-                  'WordPress Developer',
-                  2000,
-                  'IT & Systems Specialist',
-                  2000,
-                  'Performance Marketer',
-                  2000,
-                  'Vibe Coder',
-                  2000,
-                  'Digital Marketing',
-                  2000,
-                ]}
-                wrapper="span"
-                speed={50}
-                repeat={Infinity}
-              />
+        {/* Action Buttons - Positioned right after image */}
+        <motion.div
+          variants={itemVariants}
+          className="-mt-12 md:-mt-20 flex flex-wrap justify-center gap-4 relative z-30"
+        >
+          <a href="#projects" className="px-10 py-5 bg-black text-white text-lg font-black uppercase tracking-widest rounded-xl hover:bg-slate-800 transition-all shadow-2xl shadow-black/30 hover:scale-105 active:scale-95">
+            You need a developer
+          </a>
+          <a href="#contact" className="px-10 py-5 border-4 border-black text-black text-lg font-black uppercase tracking-widest rounded-xl hover:bg-black hover:text-white transition-all hover:scale-105 active:scale-95">
+            Let's talk business
+          </a>
+        </motion.div>
+
+        {/* Bottom Info Section - Spacing tightened */}
+        <motion.div
+          variants={itemVariants}
+          className="mt-12 w-full flex flex-col md:flex-row items-center justify-between gap-6 px-4"
+        >
+          <p className="text-xl font-black text-slate-900 uppercase tracking-tighter">
+            based in Dhaka, Bangladesh.
+          </p>
+
+          <div className="flex items-center gap-4">
+            <div className="flex -space-x-3">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="w-8 h-8 border-2 border-white rounded-full bg-slate-200 overflow-hidden shadow-sm">
+                  <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="client" />
+                </div>
+              ))}
             </div>
-          </motion.div>
+            <p className="text-[10px] font-black text-slate-900 uppercase tracking-widest opacity-60">Trusted by 100+ clients</p>
+          </div>
+        </motion.div>
+      </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg text-slate-400 leading-relaxed max-w-xl"
-          >
-            I specialize in bridging the gap between cutting-edge technology and business growth.
-            From managing complex IT infrastructures to driving thousands of leads through
-            performance marketing, I deliver results that matter.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-wrap gap-4"
-          >
-            <a href="#contact" className="px-8 py-4 bg-electric hover:bg-electric-dark text-white rounded-full font-bold shadow-lg shadow-blue-500/25 transition-all hover:scale-105 active:scale-95">
-              Hire Me
-            </a>
-            <a href="#projects" className="px-8 py-4 glass-card hover:bg-white/10 rounded-full font-bold transition-all hover:scale-105 active:scale-95">
-              View Projects
-            </a>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Scroll Down Indicator */}
+      {/* Mini Logos Section */}
       <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-500 opacity-50"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.3 }}
+        transition={{ delay: 2 }}
+        className="absolute bottom-6 left-0 right-0 overflow-hidden grayscale pointer-events-none"
       >
-        <div className="w-6 h-10 border-2 border-slate-500 rounded-full flex justify-center p-1">
-          <div className="w-1 h-3 bg-slate-500 rounded-full animate-bounce"></div>
+        <div className="flex justify-center gap-10 items-center px-10">
+          <span className="text-lg font-bold italic text-slate-900">audible</span>
+          <span className="text-lg font-serif text-slate-900">Ballantine's</span>
+          <span className="text-lg font-black uppercase tracking-widest text-slate-900">OLYMPIA</span>
+          <span className="text-lg font-mono text-slate-900">Veuve Clicquot</span>
         </div>
       </motion.div>
     </section>

@@ -28,10 +28,10 @@ export default function MediaGallery() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-16 border-l-4 border-black pl-6"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Creative <span className="text-purple-400">Media</span></h2>
-          <p className="text-slate-400 code-text">// Visual design and video post-production results</p>
+          <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-slate-900">Creative <span className="text-slate-400">Media</span></h2>
+          <p className="text-slate-600 font-mono text-sm tracking-widest uppercase">// Visual design and video post-production results</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-10">
@@ -52,18 +52,18 @@ export default function MediaGallery() {
                 />
                 
                 {/* Information Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-40 group-hover:opacity-60 transition-opacity" />
                 
                 <div className="absolute inset-0 p-8 flex flex-col justify-end transform transition-transform duration-500 group-hover:translate-y-0 translate-y-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <div className="p-2 bg-purple-500/20 rounded-lg text-purple-400">
+                    <div className="p-2 bg-white/20 rounded-lg text-white backdrop-blur-md">
                       {work.icon}
                     </div>
-                    <span className="text-xs font-mono uppercase tracking-widest text-purple-300">
+                    <span className="text-xs font-black uppercase tracking-widest text-white">
                       {work.category}
                     </span>
                   </div>
-                  <h3 className="text-2xl font-bold mb-2 text-white">{work.title}</h3>
+                  <h3 className="text-2xl font-black mb-2 text-white uppercase tracking-tight">{work.title}</h3>
                   <p className="text-sm text-slate-300 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     {work.description}
                   </p>

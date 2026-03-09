@@ -32,27 +32,26 @@ export default function OtherWorks() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 flex items-center gap-4"
+          className="mb-16 flex items-center gap-4 border-l-4 border-black pl-6"
         >
-          <div className="h-1 lg:w-32 bg-indigo-500/20 rounded-full" />
-          <h2 className="text-4xl font-bold shrink-0">Other <span className="text-indigo-400">Works</span></h2>
+          <h2 className="text-4xl font-black uppercase tracking-tighter text-slate-900">Other <span className="text-slate-400">Works</span></h2>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {otherWorks.map((work, index) => (
             <motion.div
               key={work.title}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="glass-card p-8 group hover:bg-white/[0.08]"
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+              className="glass-card p-8 group hover:bg-black/[0.03] shadow-xl border-t-4 border-black/5"
             >
-              <div className="mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-transform w-fit">
+              <div className="mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-transform w-fit p-4 bg-black/5 rounded-2xl">
                 {work.icon}
               </div>
-              <h3 className="text-xl font-bold mb-3">{work.title}</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
+              <h3 className="text-xl font-black mb-3 uppercase text-slate-900 tracking-tight">{work.title}</h3>
+              <p className="text-sm text-slate-700 font-medium leading-relaxed">
                 {work.description}
               </p>
             </motion.div>
