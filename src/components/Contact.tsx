@@ -67,7 +67,7 @@ export default function Contact() {
             viewport={{ once: true }}
             className="space-y-8 border-l-4 border-black pl-8"
           >
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase text-slate-900">
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase text-slate-900 leading-[1.1] sm:leading-[0.9]">
               Let's build <br />
               <span className="text-slate-400">something great.</span>
             </h2>
@@ -77,25 +77,25 @@ export default function Contact() {
             </p>
 
             <div className="space-y-6">
-              <div className="flex items-center gap-6 p-6 glass-card group shadow-xl">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 p-6 glass-card group shadow-xl">
                 <div className="p-4 bg-black/10 rounded-2xl text-black group-hover:scale-110 transition-transform">
                   <EmailIcon size={24} />
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="text-xs font-black text-slate-500 uppercase tracking-widest mb-1">Direct Email</p>
-                  <a href="mailto:rjkawsar151@gmail.com" className="text-xl font-black text-slate-900 hover:text-black transition-colors uppercase tracking-tight">
+                  <a href="mailto:rjkawsar151@gmail.com" className="text-lg sm:text-xl font-black text-slate-900 hover:text-black transition-colors uppercase tracking-tight block break-all">
                     rjkawsar151@gmail.com
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-center gap-6 p-6 glass-card group shadow-xl">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 p-6 glass-card group shadow-xl">
                 <div className="p-4 bg-black/10 rounded-2xl text-black group-hover:scale-110 transition-transform">
                   <Mail size={24} />
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="text-xs font-black text-slate-500 uppercase tracking-widest mb-1">Available for</p>
-                  <p className="text-xl font-black text-slate-900 uppercase tracking-tight">Freelance & Full-time</p>
+                  <p className="text-lg sm:text-xl font-black text-slate-900 uppercase tracking-tight">Freelance & Full-time</p>
                 </div>
               </div>
             </div>
@@ -107,9 +107,9 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
-            className="glass-card p-10 relative shadow-2xl"
+            className="glass-card p-6 sm:p-10 relative shadow-2xl"
           >
-            <div className="absolute top-0 right-10 -translate-y-1/2 p-4 bg-black rounded-2xl shadow-xl">
+            <div className="absolute top-0 right-6 sm:right-10 -translate-y-1/2 p-4 bg-black rounded-2xl shadow-xl">
               <Send size={24} className="text-white" />
             </div>
 

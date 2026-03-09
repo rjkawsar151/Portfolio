@@ -37,13 +37,9 @@ function App() {
 
       {/* Modern Navigation */}
       <header 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 ${
-          isScrolled ? 'py-4' : 'py-8'
-        }`}
+        className="absolute top-0 left-0 right-0 z-50 py-8 px-6"
       >
-        <div className={`max-w-7xl mx-auto flex items-center justify-between transition-all duration-300 ${
-          isScrolled ? 'backdrop-blur-md px-6 py-3 border-black/5 bg-white/50' : ''
-        }`}>
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
           <a href="#" className="flex items-center gap-2 group">
             <div className="w-10 h-10 bg-black rounded-xl flex items-center justify-center shadow-lg shadow-black/10 group-hover:rotate-12 transition-transform">
               <Rocket className="text-white" size={20} />
