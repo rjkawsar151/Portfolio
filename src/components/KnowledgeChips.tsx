@@ -10,25 +10,25 @@ const knowledgeData = [
   },
   {
     title: 'Site Deployment',
-    description: 'Expertise in Vercel, Netlify, and high-performance hosting.',
+    description: 'Expertise in CPanel, Hpanel,Vercel and high-performance hosting.',
     icon: <Globe className="text-blue-400" />,
     color: 'border-blue-500/30'
   },
   {
     title: 'Database Config',
-    description: 'Optimized MySQL and NoSQL database management.',
+    description: 'Optimized MySQL database management.',
     icon: <Database className="text-green-400" />,
     color: 'border-green-500/30'
   },
   {
     title: 'Ads Mastery',
-    description: 'Strategic Meta and Google Ads for maximum ROI.',
+    description: 'Strategic Meta and Google Ads for maximum Sale.',
     icon: <Megaphone className="text-red-400" />,
     color: 'border-red-500/30'
   },
   {
-    title: 'Wordpress Dev',
-    description: 'Custom themes and high-performance CMS solutions.',
+    title: 'Wordpress Development',
+    description: 'Custom Elementor themes and high-performance CMS solutions.',
     icon: <Layout className="text-indigo-400" />,
     color: 'border-indigo-500/30'
   }
@@ -38,7 +38,7 @@ export default function KnowledgeChips() {
   return (
     <section className="py-24 px-6 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
