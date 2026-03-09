@@ -1,6 +1,7 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import profileImg from '../assets/profile.png';
+import { useState, useEffect } from 'react';
 
 export default function Hero() {
   const containerVariants = {
@@ -24,6 +25,31 @@ export default function Hero() {
     }
   };
 
+  const line1 = [
+    'SEO, Content &',
+    'Digital Marketing &',
+    'Wordpress &',
+    'Video edit &',
+    'Creatives &'
+  ];
+
+  const line2 = [
+    'Meta, Google ads',
+    'analysis',
+    'Vibe Code',
+    'Motion Graphics',
+    'Graphics'
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % line1.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-20 px-6 overflow-hidden">
       <motion.div
@@ -40,32 +66,32 @@ export default function Hero() {
           </p>
         </motion.div>
 
-        {/* Dynamic Typography Section - Background Text with Typewriter */}
+        {/* Dynamic Typography Section - Background Text with Balanced Animations */}
         <div className="relative w-full flex flex-col items-center justify-center py-4 mt-4">
-          <div className="flex flex-col items-center justify-center select-none pointer-events-none opacity-90 text-center relative h-[250px] md:h-[350px]">
-            <div className="text-[12vw] md:text-[10vw] leading-[0.8] font-black text-slate-900 tracking-tighter uppercase whitespace-nowrap">
-              <TypeAnimation
-                sequence={[
-                  'SEO, Content &', 1500,
-                  'Digital Marketing &', 1500,
-                  'Wordpress &', 1500,
-                  'Video edit &', 1500,
-                  'Creatives &', 1500,
-                ]}
-                repeat={Infinity}
-                cursor={false}
-              />
+          <div className="flex flex-col items-center justify-center select-none pointer-events-none opacity-90 text-center relative h-[250px] md:h-[350px] w-full">
+            
+            {/* First Line: Fade and Blur */}
+            <div className="text-[12vw] md:text-[10vw] leading-[0.8] font-black text-slate-900 tracking-tighter uppercase whitespace-nowrap relative h-[1em] w-full flex justify-center">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={currentIndex}
+                  initial={{ opacity: 0, filter: 'blur(15px)', y: 10 }}
+                  animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
+                  exit={{ opacity: 0, filter: 'blur(15px)', y: -10 }}
+                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                  className="absolute"
+                >
+                  {line1[currentIndex]}
+                </motion.span>
+              </AnimatePresence>
             </div>
-            <div className="text-[12vw] md:text-[10vw] leading-[0.8] font-black text-outline tracking-tighter uppercase whitespace-nowrap">
+
+            {/* Second Line: Typewriter (as it is) */}
+            <div className="text-[12vw] md:text-[10vw] leading-[0.8] font-black text-outline tracking-tighter uppercase whitespace-nowrap mt-2">
               <TypeAnimation
-                sequence={[
-                  'Meta, Google ads', 1500,
-                  'analysis', 1500,
-                  'Vibe Code', 1500,
-                  'Motion Graphics', 1500,
-                  'Graphics', 1500,
-                ]}
-                repeat={Infinity}
+                key={currentIndex}
+                sequence={[line2[currentIndex], 1500]}
+                repeat={0}
                 cursor={false}
               />
             </div>
