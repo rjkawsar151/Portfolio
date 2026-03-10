@@ -61,7 +61,7 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left Side: Hire Me Info */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -71,7 +71,7 @@ export default function Contact() {
               Let's build <br />
               <span className="text-slate-400">something great.</span>
             </h2>
-            
+
             <p className="text-lg text-slate-700 font-medium max-w-md leading-relaxed">
               I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
             </p>
@@ -83,8 +83,8 @@ export default function Contact() {
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-xs font-black text-slate-500 uppercase tracking-widest mb-1">Direct Email</p>
-                  <a href="mailto:rjkawsar151@gmail.com" className="text-lg sm:text-xl font-black text-slate-900 hover:text-black transition-colors uppercase tracking-tight block break-all">
-                    rjkawsar151@gmail.com
+                  <a href="mailto:kawsarhosen.dev@gmail.com" className="text-lg sm:text-xl font-black text-slate-900 hover:text-black transition-colors uppercase tracking-tight block break-all">
+                    kawsarhosen.dev@gmail.com
                   </a>
                 </div>
               </div>
@@ -178,7 +178,7 @@ export default function Contact() {
                 </motion.div>
               )}
 
-               <button
+              <button
                 type="submit"
                 disabled={status === 'sending'}
                 className="w-full py-5 bg-black text-white text-lg font-black uppercase tracking-widest rounded-2xl hover:bg-slate-800 transition-all shadow-xl shadow-black/20 disabled:opacity-50 flex items-center justify-center gap-3 active:scale-95"
